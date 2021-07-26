@@ -5,6 +5,7 @@ let canvas;
 let ctx;
 let logoColor;
 var dir = (Math.random() * Math.PI * 2.0);
+var dragging = false;
 let dvd = {
     x: 200,
     y: 300,
@@ -12,6 +13,17 @@ let dvd = {
     yspeed: Math.cos(dir)*5,
     img: new Image()
 };
+
+let dragOffset = {
+	x: 0,
+	y: 0,
+}
+let mousePos = {
+	x: 0,
+	y: 0,
+	vx: 0,
+	vy: 0,
+}
 
 const clamp = (num, min, max) => {
 	Math.min(Math.max(num, min), max);
@@ -42,10 +54,21 @@ function update() {
         ctx.fillRect(dvd.x-2, dvd.y-2, (dvd.img.width*scale)+4, (dvd.img.height*scale)+4);
         ctx.drawImage(dvd.img, dvd.x, dvd.y, dvd.img.width*scale, dvd.img.height*scale);
         //Move the logo
-        dvd.x+=dvd.xspeed;
-        dvd.y+=dvd.yspeed;
-		dvd.xspeed-=Math.sin(grav)*0.1;
-		dvd.yspeed-=Math.cos(grav)*0.1;
+		if(!dragging){
+			dvd.x+=dvd.xspeed;
+			dvd.y+=dvd.yspeed;
+			dvd.xspeed-=Math.sin(grav)*0.1;
+			dvd.yspeed-=Math.cos(grav)*0.1;
+			scale = ((scale*5) + 0.17) / 6;
+		}else{
+			scale = ((scale*5) + 0.24) / 6;
+			var offsetAmnt = 1+((scale-.17)*(1/.24)*((.48/.17)-1));
+			
+			dvd.xspeed=0;
+			dvd.yspeed=0;
+			dvd.x = mousePos.x - (dragOffset.x*offsetAmnt) + ((Math.random() * 6) - 3);
+			dvd.y = mousePos.y - (dragOffset.y*offsetAmnt) + ((Math.random() * 6) - 3);
+		}
         //Check for collision 
         checkHitBox();
         update();   
@@ -55,20 +78,20 @@ function update() {
 //Check for border collision
 function checkHitBox(){
     if((dvd.x+dvd.img.width*scale >= canvas.width && dvd.xspeed > 0) || (dvd.x <= 0 && dvd.xspeed < 0)){
-        dvd.xspeed *= -.31;
-        dvd.yspeed *= .31;
+		var fricMult = (0 - ( (Math.atan(1/Math.abs(4*dvd.xspeed))) / (0.5 * Math.PI) ) ) + 1;
+        dvd.xspeed *= -.5;
+        dvd.yspeed *= fricMult;
 		let vel = Math.abs(dvd.xspeed);
-		console.log("X - " + vel);
 		if(vel >=.1){
 			pickColor();
 		}
     }
         
     if((dvd.y+dvd.img.height*scale >= canvas.height && dvd.yspeed > 0) || (dvd.y <= 0 && dvd.yspeed < 0)){
-        dvd.yspeed *= -.31;
-        dvd.xspeed *= .31;
+		var fricMult = (0 - ( (Math.atan(1/Math.abs(4*dvd.yspeed))) / (0.5 * Math.PI) ) ) + 1;
+        dvd.yspeed *= -.5;
+        dvd.xspeed *= fricMult;
 		let vel = Math.abs(dvd.yspeed);
-		console.log("Y - " + vel);
 		if(vel >=.1){
 			pickColor();
 		}
@@ -78,6 +101,46 @@ function checkHitBox(){
 setInterval(function(){
 	grav = (Math.random() * Math.PI * 2.0);
 }, 5000)
+
+var mouseIsDown = false;
+
+canvas.onmousedown = function(e){
+	mouseIsDown = true;
+	dragOffset.x = e.x - dvd.x;
+	dragOffset.y = e.y - dvd.y;
+	mousePos.vx = 0;
+	mousePos.vy = 0;
+	if ((e.x >= dvd.x && e.x <= dvd.x+dvd.img.width*scale) && (e.y >= dvd.y && e.y <= dvd.y+dvd.img.height*scale)){
+		dragging = true;
+	}
+	
+	console.log("Mouse Down")
+}
+
+document.body.onmousemove = function(e){
+	mousePos.x = e.x;
+	mousePos.y = e.y;
+	mousePos.vx = e.movementX;
+	mousePos.vy = e.movementY;
+}
+
+document.body.onmouseup = function(e){
+	mouseIsDown = false;
+	if(dragging){
+	console.log("Mouse Up")
+	dragging = false;
+	dvd.xspeed = mousePos.vx;
+	dvd.yspeed = mousePos.vy;
+}}
+
+document.body.onmouseout = function(e){
+	mouseIsDown = false;
+	if(dragging){
+	console.log("Mouse Up")
+	dragging = false;
+	dvd.xspeed = mousePos.vx;
+	dvd.yspeed = mousePos.vy;
+}}
 
 //Pick a random color in RGB format
 function pickColor(){
