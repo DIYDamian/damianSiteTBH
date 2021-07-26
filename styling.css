@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Martel');
+@import url('https://fonts.googleapis.com/css?family=Martel|Titillium+Web');
 
 html, body {
 	margin: 0;
@@ -121,6 +121,25 @@ div.foot {
 	width:40%;
     height:200px;
 	background-color: white;
+}
+
+div.test {
+	font-family: "Titillium Web", sans-serif;
+	font-weight: bolder;
+    position: fixed;
+    bottom: 2px;
+    right: 2px;
+    
+    width: 2em;
+	height: 2em;
+	border-radius: 50%;
+    background-color: #00000011;
+    color: #fff1;
+	font-size: 1.5em;
+	margin: auto;
+	text-align:center;
+	vertical-align: middle;
+	line-height: 200%;
 }
 
 
