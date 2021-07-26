@@ -78,7 +78,7 @@ function update() {
 //Check for border collision
 function checkHitBox(){
     if((dvd.x+dvd.img.width*scale >= canvas.width && dvd.xspeed > 0) || (dvd.x <= 0 && dvd.xspeed < 0)){
-		var fricMult = (0 - ( (Math.atan(1/Math.abs(4*dvd.xspeed))) / (0.5 * Math.PI) ) ) + 1;
+		var fricMult = Math.min((0 - ( (Math.atan(1/Math.abs(4*dvd.xspeed))) / (0.5 * Math.PI) ) ) + 1, 1);
         dvd.xspeed *= -.5;
         dvd.yspeed *= fricMult;
 		let vel = Math.abs(dvd.xspeed);
@@ -88,7 +88,7 @@ function checkHitBox(){
     }
         
     if((dvd.y+dvd.img.height*scale >= canvas.height && dvd.yspeed > 0) || (dvd.y <= 0 && dvd.yspeed < 0)){
-		var fricMult = (0 - ( (Math.atan(1/Math.abs(4*dvd.yspeed))) / (0.5 * Math.PI) ) ) + 1;
+		var fricMult = Math.min((0 - ( (Math.atan(1/Math.abs(4*dvd.yspeed))) / (0.5 * Math.PI) ) ) + 1, 1);
         dvd.yspeed *= -.5;
         dvd.xspeed *= fricMult;
 		let vel = Math.abs(dvd.yspeed);
