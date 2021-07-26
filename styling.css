@@ -31,7 +31,7 @@ div.container {
 	
 	outline-style: double;
 	outline-width: 4px;
-	min-width: 35%;
+	width: 35%;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.125), 0 10px 10px rgba(0,0,0,0.11);
 	border-color: white;
 }
@@ -48,6 +48,24 @@ h1#maintitle {
 	line-height: 0em;
 	color: #000000dd;
 	font-family: "Martel", times, serif;
+	/*text-align: center;*/
+}
+
+p {
+	text-align: justify;
+	line-height: 1.5em;
+	text-indent: 1em;
+	clear: none;
+}
+
+h2 {
+	font-size: 1.3em;
+	font-weight: 300;
+	line-height: 0em;
+	color: #000000bb;
+	font-family: "Martel", times, serif;
+	margin-top: 0.6em;
+	margin-bottom: 0.4em;
 	/*text-align: center;*/
 }
 
