@@ -6,6 +6,14 @@ let ctx;
 let logoColor;
 var dir = (Math.random() * Math.PI * 2.0);
 var dragging = false;
+var allKicks =  new Array();
+
+var temp = 1;
+for(temp=1; temp<=20; temp++){
+	const kick = new Audio('kick.wav');
+	kick.volume = 0.1;
+	allKicks.push(kick);
+}
 let dvd = {
     x: 200,
     y: 300,
@@ -74,7 +82,7 @@ function update() {
         update();   
     }, speed)
 }
-
+var kickNum = 1;
 //Check for border collision
 function checkHitBox(){
     if((dvd.x+dvd.img.width*scale >= canvas.width && dvd.xspeed > 0) || (dvd.x <= 0 && dvd.xspeed < 0)){
@@ -84,6 +92,13 @@ function checkHitBox(){
 		let vel = Math.abs(dvd.xspeed);
 		if(vel >=.1){
 			pickColor();
+			//var kick = allKicks[kickNum];
+			//kick.play();
+			//kick.volume = 0.1;
+			//kickNum++;
+			//if(kickNum>=19){
+			//	kickNum=1;
+			//}
 		}
     }
         
@@ -94,6 +109,13 @@ function checkHitBox(){
 		let vel = Math.abs(dvd.yspeed);
 		if(vel >=.1){
 			pickColor();
+			//var kick = allKicks[kickNum];
+			//kick.volume = fricMult/2;
+			//kick.play();
+			//kickNum++;
+			//if(kickNum>=19){
+			//	kickNum=1;
+			//}
 		}
     }    
 }

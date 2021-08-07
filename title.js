@@ -54,7 +54,10 @@ function randomRgbaString (alpha) {
   return `rgba(${r},${g},${b},${a})`
 }
 
+var i = 0;
+
 setInterval(function(){
+	i++;
 	var myBox  = document.getElementById("fullShit");
 	myBox.style.outlineColor = randomRgbaString(.9);
 }, 42);
