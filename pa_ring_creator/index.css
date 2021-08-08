@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root {
+	--col-lightred: #EF756C;
+	--col-red: #f05455;
+	--col-awhite: #f2f2f2;
+	--col-nwhite: #f3f3f4;
+	--col-grey: #323233;
+	--col-nblack: #111111;
+}
+
+html {
+	background: var(--col-grey);
+	color: var(--col-nwhite);
+	font-family: 'Inconsolata', monospaced;
+}
+
+.pageContent {
+	max-width: 70%;
+	margin: 0px auto;
+}
+
+h1 {
+	font-family: "Noto Sans";
+	text-align: center;
+}
+
+.valuebox {
+	width: 40%;
+	margin: 0px auto;
+}
+
+.valuebox p.label {
+	margin-bottom: 2px;
+	margin-left: 2px;
+	font-size: 1.5em;
+}
+
+.slideralign {
+	display: flex;
+	font-size: 24pt;
+}
+
+.required {
+	color: var(--col-lightred);
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: calc(100% - (2px + 2em));
+	height: 2em;
+	background: var(--col-nwhite);
+	border-radius: 3px;
+	outline: none;
+	padding: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	border-radius: 3px;
+	width: 2em;
+	height: 2em;
+	background: var(--col-grey);
+	cursor: pointer;
+	transition: .2s;
+}
+
+.slider::-moz-range-thumb {
+	border-radius: 3px;
+	width: 2em;
+	height: 2em;
+	background: var(--col-grey);
+	cursor: pointer;
+	transition: .2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+	background: var(--col-nblack);
+}
+
+.slider::-moz-range-thumb:hover {
+	background: var(--col-nblack);
+}
+
+.sliderOutput {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--col-nblack);
+	border-radius: 3px;
+	height: 1.3333em;
+	min-width: 1.3333em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	margin-left: 5px;
+	margin-top: 2px;
+	font-size: .75em;
+}
+
+#dpOutput {
+	min-width: 30%;
+}
+
+.numInput {
+	background: var(--col-nwhite);
+	width: 100%;
+	height: 1.3333em;
+	font-size: .75em;
+	font-family: 'Inconsolata';
+	border-style: none;
+	border-radius: 0;
+	text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input::placeholder {
+	color: #AAAAAA;
+}
+
+.button {
+	font-family: 'Noto Sans';
+	font-weight: bolder;
+	position: relative;
+	left: 25%;
+	margin-top: 24px;
+	font-size: 1.5em;
+	width: 50%;
+	background: var(--col-awhite);
+	border-style: none;
+	border-radius: 8px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#bullets {
+	border-collapse: separate;
+	border-spacing: 3px 3px;
+}
+
+#bullets th {
+	background: var(--col-lightred);
+	font-size: 1.35em;
+	padding: 5px;
+}
+
+#bullets td {
+	background: var(--col-nblack);
+	font-size: 1.15em;
+	padding: 5px;
+}
+
+.button:hover {
+	background: #DDDDDD;
+}

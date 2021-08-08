@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Project Arrhythmia Bullet Ring Generator</title>
+		<link rel="stylesheet" type="text/css" href="index.css?v=8.7.21">
+	</head>
+	
+	<body>
+	
+		<div class="pageContent">
+			<h1>
+				Parentless Bullet Ring Generator
+			</h1>
+			<div class="valuebox">
+				<p class="label">Bullet Count<span class="required">*</span></p>
+				<div class="slideralign">
+					<input type="range" min="1" max="50" value="12" class="slider" id="bulletCount"></input>
+					<p class="sliderOutput" id="bcOutput">1</p>
+				</div>
+			</div>
+			<div class="valuebox">
+				<p class="label">Movement Distance<span class="required">*</span></p>
+				<div class="slideralign">
+					<input type="number" min="0" placeholder="100.00" value="100.00" class="numInput" id="bulletDist" required></input>
+				</div>
+			</div>
+			<div class="valuebox">
+				<p class="label">Rotation Offset</p>
+				<div class="slideralign">
+					<input type="number" placeholder="0.00" class="numInput" id="rotationOffset"></input>
+				</div>
+			</div>
+			<div class="valuebox">
+				<p class="label">Decimal Places<span class="required">*</span></p>
+				<div class="slideralign">
+					<input type="range" min="0" max="3" value="3" class="slider" id="decimalPlaces"></input>
+					<p class="sliderOutput" id="dpOutput">3 (1.000)</p>
+				</div>
+			</div>
+			<div class="valuebox">
+				<button class="button" id="generate">Generate</button>
+			</div>
+			<br>
+			<table id="bullets" style="width:80%; margin:auto;">
+				<tr>
+					<th style="width:3em">Bullet #</th>
+					<th style="width:calc(30%-2.5em)">X Position</th>
+					<th style="width:calc(30%-2.5em)">Y Position</th>
+					<th>Rotation</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>0.000</td>
+					<td>100.000</td>
+					<td>0</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript" src="fullControl.js?v=8.7.21"></script>
+	</body>
+
+</html>
