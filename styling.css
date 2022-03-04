@@ -8,7 +8,7 @@ html, body {
 
 html {
 	background: linear-gradient(to bottom left, rgba(0, 0, 0, .5), rgba(50, 100, 125, 0.3), rgba(40, 90, 115, 0.4), rgba(30, 80, 105, 0.5)), url(bg.gif);
-	background-color: black;
+	/*background-color: black;*/
 	background-repeat: repeat;
 	font-family: "Martel", times, serif;
 	line-height: 0.35em;
